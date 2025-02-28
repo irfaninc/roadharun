@@ -1,38 +1,6 @@
 <div>
-        <!-- Navbar -->
-        <header>
-            <div class="container">
-               <nav class="navbar navbar-expand-lg navbar-boxed mx-auto mt-lg-4">
-                  <a class="navbar-brand" href="{{ route('dashboard') }}"><i class="bi bi-activity"></i> Roadha Run</a>
-                  <button
-                     class="navbar-toggler"
-                     type="button"
-                     data-bs-toggle="collapse"
-                     data-bs-target="#navbarSupportedContent"
-                     aria-controls="navbarSupportedContent"
-                     aria-expanded="false"
-                     aria-label="Toggle navigation">
-                     <i class="bi bi-list"></i>
-                  </button>
-    
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                     <ul class="navbar-nav ms-auto align-items-lg-center">
-                        @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
-                        </li>
-                        @endauth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('leaderboard') }}">Leaderboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('activity') }}">Activity</a>
-                        </li>
-                     </ul>
-                  </div>
-               </nav>
-            </div>
-         </header>
+       
+    <livewire:inc.navbar />
 
 
          <section class="my-5">
@@ -43,12 +11,12 @@
                             <h3 class="display-5 fw-bold mb-4 ls-sm text-center"><span class="text-primary">🏆 Leaderboard</span></h3>
                         
                             <div class="card p-4">
-                                <table class="table table-responsive table-hoverable">
+                                <table class="table table-responsive table-hover">
                                     <thead>
-                                        <tr class="">
+                                        <tr>
                                             <th>Rank</th>
                                             <th>Runner</th>
-                                            <th>Total Distance (km)</th>
+                                            <th>Tot Dist (km)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
