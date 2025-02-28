@@ -32,6 +32,10 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <!-- Pagination Links -->
+                            <div class="mt-4">
+                                {{ $runs->links('pagination::bootstrap-5') }} 
+                            </div>
                         </div>
                     </div>
 

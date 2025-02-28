@@ -4,22 +4,22 @@ namespace App\Livewire\Runner;
 
 use App\Models\Distance;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 
 class RunnerActivity extends Component
 {
-    public $runs;
-
-    public function mount(){
-
-        $this->runs = Distance::with('runner')
-                    ->orderByDesc('date')
-                    ->get();
-
-    }
+    use WithPagination;
 
     public function render()
     {
-        return view('livewire.runner.runner-activity');
+        // Fetch paginated data directly in the render method
+        $runs = Distance::with('runner')
+                    ->orderByDesc('date')
+                    ->paginate(20); // 10 items per page
+
+        return view('livewire.runner.runner-activity', [
+            'runs' => $runs, // Pass the paginated data to the view
+        ]);
     }
 }
