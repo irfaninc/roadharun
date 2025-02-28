@@ -1,0 +1,7 @@
+.navbar {
+    position: relative; /* Instead of fixed */
+}
+
+.form-control:disabled {
+    background-color: #f7f7f7;
+}
