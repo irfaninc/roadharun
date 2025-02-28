@@ -15,7 +15,7 @@ class RunnerActivity extends Component
     {
         // Fetch paginated data directly in the render method
         $runs = Distance::with('runner')
-                    ->orderByDesc('date')
+                    ->orderByDesc('id')
                     ->paginate(20); // 10 items per page
 
         return view('livewire.runner.runner-activity', [
