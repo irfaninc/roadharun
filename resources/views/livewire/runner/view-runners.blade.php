@@ -11,7 +11,10 @@
                                 <div class="d-flex flex-column gap-4">
                                     <div class="d-flex flex-row gap-3 align-items-center">
                                         <div><img src="{{ $runner->profile_picture ? asset('storage/' . $runner->profile_picture) : asset('default-profile.png') }}" alt="avatar" class="rounded-circle icon-shape icon-xl"></div>
-                                        <div class="d-flex flex-column"><h4>{{ $runner->name }}</h4></div>
+                                        <div class="d-flex flex-column">
+                                            <h4>{{ $runner->name }}</h4>
+                                            <a href="{{ route('edit-runner', $runner) }}">Edit</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

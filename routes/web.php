@@ -7,6 +7,7 @@ use App\Livewire\Auth\ResetPassword;
 use App\Livewire\Dashboard;
 use App\Livewire\Leaderboard;
 use App\Livewire\Runner\AddRun;
+use App\Livewire\Runner\EditRunner;
 use App\Livewire\Runner\RunnerActivity;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/addrun', AddRun::class)->name('addrun');
+    Route::get('/edit-runner/{runner}', EditRunner::class)->name('edit-runner');
     //Route::get('/', Leaderboard::class)->name('leaderboard');
     //Route::get('/activity', RunnerActivity::class)->name('activity');
 });
