@@ -38,7 +38,7 @@
 
                           <div class="mb-3">
                             <label class="form-label">Distance (KM)</label>
-                             <input type="number" step="0.1" class="form-control" wire:model="distance">
+                             <input type="number" step="0.01" class="form-control" wire:model="distance">
                              @error('distance')<div class="text-danger fs-6">{{ $message }}</div>@enderror
                           </div>    
                           <div class="d-grid">
