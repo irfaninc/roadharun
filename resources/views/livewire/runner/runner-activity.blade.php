@@ -27,7 +27,7 @@
                                                 <td>{{ $run->id }}</td>
                                                 <td><img src="{{ $run->runner->profile_picture ? asset('storage/' . $run->runner->profile_picture) : asset('default-profile.png') }}" 
                                                     alt="Profile Picture" class="avatar avatar-lg rounded-circle me-2"> {{ $run->runner->name }}</td>  
-                                                <td>{{ date('d-m-Y', strtotime($run->date)) }}</td>
+                                                <td>{{ date('d-m-y', strtotime($run->date)) }}</td>
                                                 <td>{{ $run->distance }} km</td>
                                             </tr>
                                         @endforeach

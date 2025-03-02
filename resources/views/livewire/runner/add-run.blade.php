@@ -68,7 +68,7 @@
                                     <img src="{{ $run->runner->profile_picture ? asset('storage/' . $run->runner->profile_picture) : asset('default-profile.png') }}" alt="avatar" class="rounded-circle icon-shape icon-xl me-2">
                                     <div>
                                     <h6 class="mb-0">{{ $run->runner->name }}</h6>
-                                            <small>{{ date('d-m-Y', strtotime($run->date)) }}</small>
+                                            <small>{{ date('d-m-y', strtotime($run->date)) }}</small>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">
