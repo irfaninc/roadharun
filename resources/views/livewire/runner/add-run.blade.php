@@ -37,10 +37,33 @@
                           </div>
 
                           <div class="mb-3">
+                              <label class="form-label">Select Time</label>
+                              <input type="time" class="form-control" wire:model="time">
+                              @error('time')<div class="text-danger fs-6">{{ $message }}</div>@enderror
+                           </div>
+
+                          <div class="mb-3">
                             <label class="form-label">Distance (KM)</label>
                              <input type="number" step="0.01" class="form-control" wire:model="distance">
                              @error('distance')<div class="text-danger fs-6">{{ $message }}</div>@enderror
-                          </div>    
+                          </div>
+                          
+                          <div class="mb-3">
+                           <label class="form-label">Activity</label>
+                            <select wire:model="type" class="form-select">
+                              <option value="">Select Type of Activity</option>
+                              <option value="Walk">Walk</option>
+                              <option value="Run">Run</option>
+                           </select>
+                            @error('type')<div class="text-danger fs-6">{{ $message }}</div>@enderror
+                         </div>
+
+                         <div class="mb-3">
+                           <label class="form-label">Description</label>
+                            <input type="text" class="form-control" wire:model="description">
+                            @error('description')<div class="text-danger fs-6">{{ $message }}</div>@enderror
+                         </div>
+
                           <div class="d-grid">
                              <button class="btn btn-primary" type="submit">Add Run</button>
                           </div>
@@ -68,7 +91,8 @@
                                     <img src="{{ $run->runner->profile_picture ? asset('storage/' . $run->runner->profile_picture) : asset('default-profile.png') }}" alt="avatar" class="rounded-circle icon-shape icon-xl me-2">
                                     <div>
                                     <h6 class="mb-0">{{ $run->runner->name }}</h6>
-                                            <small>{{ date('d-m-y', strtotime($run->date)) }}</small>
+                                            <small>{{ date('d-m-y', strtotime($run->date)) }} - {{ date('H:i', strtotime($run->time)) }}</small>
+                                            <br><small>{{ $run->type }} - {{ $run->description }}</small>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center">

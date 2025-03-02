@@ -9,7 +9,7 @@ class Distance extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['runner_id', 'date', 'distance'];
+    protected $fillable = ['runner_id', 'date', 'time', 'distance', 'description', 'type'];
 
     public function runner() {
         return $this->belongsTo(Runner::class);

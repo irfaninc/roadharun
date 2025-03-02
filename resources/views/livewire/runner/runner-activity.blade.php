@@ -18,7 +18,10 @@
                                             <th>#</th>
                                             <th>Runner</th>
                                             <th>Date</th>
-                                            <th>Distance (km)</th>
+                                            <th>Time</th>
+                                            <th>Distance</th>
+                                            <th>Type</th>
+                                            <th>Desc</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -28,7 +31,10 @@
                                                 <td><img src="{{ $run->runner->profile_picture ? asset('storage/' . $run->runner->profile_picture) : asset('default-profile.png') }}" 
                                                     alt="Profile Picture" class="avatar avatar-lg rounded-circle me-2"> {{ $run->runner->name }}</td>  
                                                 <td>{{ date('d-m-y', strtotime($run->date)) }}</td>
+                                                <td>{{ date('H:i', strtotime($run->time)) }}</td>
                                                 <td>{{ $run->distance }} km</td>
+                                                <td>{{ $run->type }}</td>
+                                                <td>{{ $run->description }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

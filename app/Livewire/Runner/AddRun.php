@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class AddRun extends Component
 {
-    public $runner_id, $distance, $date;
+    public $runner_id, $distance, $date, $time, $description, $type;
     public $runners, $runs;
 
     public function mount(){
@@ -25,6 +25,9 @@ class AddRun extends Component
         'runner_id' => 'required|exists:runners,id',
         'distance' => 'required|numeric|min:0.1',
         'date' => 'required|date',
+        'time' => 'required|date_format:H:i', // Ensures time is in HH:MM format
+        'description' => 'nullable|string|max:255',
+        'type' => 'required|string|in:Walk,Run', // Ensures only allowed types are used
     ];
 
     public function addRunDistance() {
@@ -33,7 +36,10 @@ class AddRun extends Component
         Distance::create([
             'runner_id' => $this->runner_id,
             'date' => $this->date,
+            'time' => $this->time,
             'distance' => $this->distance,
+            'description' => $this->description,
+            'type' => $this->type,
         ]);
         session()->flash('success', 'Run added successfully');
         return redirect()->route('addrun');
