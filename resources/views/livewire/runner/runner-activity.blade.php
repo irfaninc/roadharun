@@ -25,16 +25,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($runs as $run)
+                                        @foreach($activitys as $activity)
                                             <tr>
-                                                <td>{{ $run->id }}</td>
-                                                <td><img src="{{ $run->runner->profile_picture ? asset('storage/' . $run->runner->profile_picture) : asset('default-profile.png') }}" 
-                                                    alt="Profile Picture" class="avatar avatar-lg rounded-circle me-2"> {{ $run->runner->name }}</td>  
-                                                <td>{{ date('d-m-y', strtotime($run->date)) }}</td>
-                                                <td>{{ date('H:i', strtotime($run->time)) }}</td>
-                                                <td>{{ $run->distance }} km</td>
-                                                <td>{{ $run->type }}</td>
-                                                <td>{{ $run->description }}</td>
+                                                <td>{{ $activity->id }}</td>
+                                                <td><img src="{{ $activity->runner->profile_picture ? asset('storage/' . $activity->runner->profile_picture) : asset('default-profile.png') }}" 
+                                                    alt="Profile Picture" class="avatar avatar-lg rounded-circle me-2"> {{ $activity->runner->name }}</td>  
+                                                <td>{{ date('d-m-y', strtotime($activity->date)) }}</td>
+                                                <td>{{ date('H:i', strtotime($activity->time)) }}</td>
+                                                <td>{{ $activity->distance }} km</td>
+                                                <td>{{ $activity->type }}</td>
+                                                <td>{{ $activity->description }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -42,7 +42,7 @@
                             </div>
                             <!-- Pagination Links -->
                             <div class="mt-4">
-                                {{ $runs->links('pagination::bootstrap-5') }} 
+                                {{ $activitys->links('pagination::bootstrap-5') }} 
                             </div>
                         </div>
                     </div>

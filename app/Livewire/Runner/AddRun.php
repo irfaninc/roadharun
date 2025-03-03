@@ -10,15 +10,10 @@ use Livewire\Component;
 class AddRun extends Component
 {
     public $runner_id, $distance, $date, $time, $description, $type;
-    public $runners, $runs;
+    public $runners;
 
     public function mount(){
         $this->runners = Runner::all();
-
-        $this->runs = Distance::with('runner')
-                    ->orderByDesc('date')
-                    ->get();
-
     }
 
     protected $rules = [
@@ -47,6 +42,10 @@ class AddRun extends Component
 
     public function render()
     {
-        return view('livewire.runner.add-run');
+        $runs = Distance::with('runner')
+                    ->orderByDesc('date')
+                    ->paginate(5); // Adjust the number per page as needed
+
+        return view('livewire.runner.add-run', compact('runs'));
     }
 }

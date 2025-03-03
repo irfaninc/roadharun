@@ -13,8 +13,8 @@
 
      <section class="my-5">
         <div class="container">
-           <div class="row justify-content-center mb-6">
-              <div class="col-xl-5 col-lg-6 col-md-8 col-12">
+           <div class="row mb-6">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-12">
                 <h3 class="display-5 fw-bold mb-3 ls-sm">Add <span class="text-primary">Run (KM)</span></h3>
                  <div class="card shadow-sm mb-3">
                     <div class="card-body">
@@ -71,43 +71,37 @@
                     </div>
                  </div>     
               </div>
+
+              <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+               <h3 class="display-5 fw-bold mb-3 ls-sm">View <span class="text-primary">Runs (KM)</span></h3>
+                   <div class="card border-0 mb-4">
+                       <div class="card-body p-0">
+                       @foreach($runs as $run)
+                       <div class="border py-3 px-4 rounded-3 mb-3">
+                           <div class="d-flex justify-content-between">
+                               <div class="d-flex">
+                                   <img src="{{ $run->runner->profile_picture ? asset('storage/' . $run->runner->profile_picture) : asset('default-profile.png') }}" alt="avatar" class="rounded-circle icon-shape icon-xl me-2">
+                                   <div>
+                                   <h6 class="mb-0">{{ $run->runner->name }}</h6>
+                                           <small>{{ date('d-m-y', strtotime($run->date)) }} - {{ date('H:i', strtotime($run->time)) }}</small>
+                                           <br><small>{{ $run->type }} - {{ $run->description }}</small>
+                                   </div>
+                               </div>
+                               <div class="d-flex align-items-center">
+                                   <a href="#">{{ $run->distance }}</a>
+                               </div>
+                           </div>
+                       </div>
+                       @endforeach        
+                       </div>
+                   </div>
+                   <div class="mt-4">
+                    {{ $runs->links('pagination::bootstrap-5') }} <!-- For Bootstrap -->
+                    </div>
+               </div>
+
             </div>
         </div>
      </section>
-
-
-     <section class="my-5">
-        <div class="container">
-           <div class="row justify-content-center mb-6">
-              <div class="col-12">
-                <h3 class="display-5 fw-bold mb-3 ls-sm">View <span class="text-primary">Runs (KM)</span></h3>
-    
-                    <div class="card border-0 mb-4">
-                        <div class="card-body p-0">
-                        @foreach($runs as $run)
-                        <div class="border py-3 px-4 rounded-3 mb-3">
-                            <div class="d-flex justify-content-between">
-                                <div class="d-flex">
-                                    <img src="{{ $run->runner->profile_picture ? asset('storage/' . $run->runner->profile_picture) : asset('default-profile.png') }}" alt="avatar" class="rounded-circle icon-shape icon-xl me-2">
-                                    <div>
-                                    <h6 class="mb-0">{{ $run->runner->name }}</h6>
-                                            <small>{{ date('d-m-y', strtotime($run->date)) }} - {{ date('H:i', strtotime($run->time)) }}</small>
-                                            <br><small>{{ $run->type }} - {{ $run->description }}</small>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <a href="#">{{ $run->distance }}</a>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach        
-                        </div>
-                    </div>
-                    
-              </div>
-           </div>
-        </div>
-     </section>
-
     
 </div>

@@ -14,12 +14,12 @@ class RunnerActivity extends Component
     public function render()
     {
         // Fetch paginated data directly in the render method
-        $runs = Distance::with('runner')
+        $activitys = Distance::with('runner')
                     ->orderByDesc('id')
                     ->paginate(20); // 10 items per page
 
         return view('livewire.runner.runner-activity', [
-            'runs' => $runs, // Pass the paginated data to the view
+            'activitys' => $activitys, // Pass the paginated data to the view
         ]);
     }
 }
