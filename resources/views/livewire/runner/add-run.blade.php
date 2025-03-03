@@ -84,12 +84,21 @@
                                    <div>
                                    <h6 class="mb-0">{{ $run->runner->name }}</h6>
                                            <small>{{ date('d-m-y', strtotime($run->date)) }} - {{ date('H:i', strtotime($run->time)) }}</small>
-                                           <br><small>{{ $run->type }} - {{ $run->description }}</small>
                                    </div>
                                </div>
-                               <div class="d-flex align-items-center">
-                                   <a href="#">{{ $run->distance }}</a>
-                               </div>
+                               <div class="d-flex flex-column align-items-end">
+                                 <div class="d-flex align-items-end">
+                                     @if($run->type === 'Walk')
+                                         <img src="{{ asset('images/walkicon.svg') }}" alt="Walk Icon" class="icon-size me-2">
+                                     @elseif($run->type === 'Run')
+                                         <img src="{{ asset('images/runicon.svg') }}" alt="Run Icon" class="icon-size me-2">
+                                     @endif
+                                     <small>
+                                       {{ $run->description }}
+                                    </small>
+                                 </div>
+                                 <a href="#" class="fw-bold">{{ $run->distance }}</a>
+                             </div>
                            </div>
                        </div>
                        @endforeach        

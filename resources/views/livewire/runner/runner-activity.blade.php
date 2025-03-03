@@ -20,8 +20,7 @@
                                             <th>Date</th>
                                             <th>Time</th>
                                             <th>Distance</th>
-                                            <th>Type</th>
-                                            <th>Desc</th>
+                                            <th>Description</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -33,8 +32,14 @@
                                                 <td>{{ date('d-m-y', strtotime($activity->date)) }}</td>
                                                 <td>{{ date('H:i', strtotime($activity->time)) }}</td>
                                                 <td>{{ $activity->distance }} km</td>
-                                                <td>{{ $activity->type }}</td>
-                                                <td>{{ $activity->description }}</td>
+                                                <td>
+                                                    @if($activity->type === 'Walk')
+                                                        <img src="{{ asset('images/walkicon.svg') }}" alt="Walk Icon" class="icon-size me-2">
+                                                    @elseif($activity->type === 'Run')
+                                                        <img src="{{ asset('images/runicon.svg') }}" alt="Run Icon" class="icon-size me-2">
+                                                    @endif
+                                                    {{ $activity->description }}
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
