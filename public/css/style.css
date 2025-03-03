@@ -9,4 +9,5 @@
 .table th, .table td {
     white-space: nowrap; /* Prevent text from wrapping */
     min-width: 40px; /* Adjust based on your content */
+    align-content: center;
 }
