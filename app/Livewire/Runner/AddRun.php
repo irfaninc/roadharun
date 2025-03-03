@@ -43,7 +43,7 @@ class AddRun extends Component
     public function render()
     {
         $runs = Distance::with('runner')
-                    ->orderByDesc('date')
+                    ->orderByDesc('id')
                     ->paginate(5); // Adjust the number per page as needed
 
         return view('livewire.runner.add-run', compact('runs'));
